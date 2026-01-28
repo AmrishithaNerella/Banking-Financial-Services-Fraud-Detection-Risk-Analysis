@@ -45,4 +45,7 @@ components:
           description: Operational status
         IsActive:
           type: boolean
+        timestamp:
+          type: string
+          format: date-time
    
