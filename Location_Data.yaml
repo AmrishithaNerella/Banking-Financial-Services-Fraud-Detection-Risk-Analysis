@@ -1,0 +1,48 @@
+openapi: 3.0.1
+info:
+  title: Location Data Ingestion API
+  description: Schema for ingesting Location Data into Salesforce Data Cloud
+  version: 1.0.0
+
+paths:
+  /location-data:
+    post:
+      summary: Ingest Location Data records
+      operationId: ingestLocationData
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/LocationData'
+      responses:
+        '200':
+          description: Successful ingestion
+
+components:
+  schemas:
+    LocationData:
+      type: object
+      required:
+        - ATMID
+      properties:
+        ATMID:
+          type: string
+          description: Unique ATM identifier (Primary Key)
+        Location:
+          type: string
+          description: Physical ATM location
+        Latitude:
+          type: number
+          format: double
+        Longitude:
+          type: number
+          format: double
+        Status:
+          type: string
+          description: Operational status
+        IsActive:
+          type: boolean
+   
